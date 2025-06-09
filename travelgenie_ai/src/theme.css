@@ -1,34 +1,35 @@
 :root {
   /* ------------------------------------------------------------------------ */
   /*  COLOR SYSTEM: Brand Color Variables for TravelGenie AI                  */
+  /*  (2024 Palette)                                                          */
   /* ------------------------------------------------------------------------ */
-  /*  --primary      (Forest Green):      Used for MAIN actions, buttons, highlights */
-  /*  --secondary    (Sand Beige):        Used for secondary actions, subtle headers  */
-  /*  --background   (Cream White):       App background, cards, main page BG         */
-  /*  --text-dark    (Charcoal):          Main text on light backgrounds              */
-  /*  --text-light   (White):             Text on dark/primary backgrounds            */
-  /*  --accent       (Terracotta Orange): For highlights, icons, alerts, accents      */
+  /*  --primary      (#1E293B):    Main accent color for actions, headers, navbar, highlights */
+  /*  --secondary    (#64748B):    Cards, subheadings, UI elements requiring contrast to primary */
+  /*  --background   (#0F172A):    App background (default page bg) */
+  /*  --text-dark    (#CBD5E1):    Regular text on dark backgrounds          */
+  /*  --text-light   (#E2E8F0):    Headings, text needing extra contrast     */
+  /*  --accent       (Retain for highlights):  Orange (#ED8936)              */
   /* ------------------------------------------------------------------------ */
 
-  --primary:      #2F855A;    /* MAIN: buttons, links, highlights (Forest Green) */
-  --secondary:    #F6E05E;    /* SECONDARY: subtle highlights, headers (Sand Beige) */
-  --background:   #FAF9F6;    /* APP BG: background (Cream White) */
-  --text-dark:    #2D3748;    /* STANDARD TEXT: on light backgrounds (Charcoal) */
-  --text-light:   #FFFFFF;    /* INVERSE TEXT: on dark/primary backgrounds (White) */
-  --accent:       #ED8936;    /* ACCENT: icons, alerts, highlights (Terracotta Orange) */
+  --primary:      #1E293B;    /* MAIN: navigation, primary buttons, prominent headers */
+  --secondary:    #64748B;    /* CARDS & SUBHEADERS: card backgrounds, subheadings */
+  --background:   #0F172A;    /* APP BACKGROUND: general app/page background */
+  --text-dark:    #CBD5E1;    /* TEXT: normal content, body/paragraphs (on dark BG) */
+  --text-light:   #E2E8F0;    /* TEXT: headings, highlights, strong contrast (on dark/primary BG) */
+  --accent:       #ED8936;    /* ACCENT: highlights, icons, alerts (legacy highlight color) */
 }
 
 /* ========================================================================= */
 /*   THEME USAGE & BASE UTILITY CLASSES                                      */
 /*   Use these classes in components/pages for consistent theme application   */
-/*   New Palette:                                                            */
-/*    - .btn-primary: Forest Green (#2F855A)                                 */
-/*    - .btn-secondary: Sand Beige (#F6E05E)                                 */
-/*    - .btn-accent: Terracotta Orange (#ED8936)                             */
-/*    - .bg-background: Cream White (#FAF9F6)                                */
-/*    - .text-dark: Charcoal (#2D3748)                                       */
-/*    - .text-light: White (#FFFFFF)                                         */
-/*    - .accent-highlight/.text-accent: Terracotta                           */
+/*   PALETTE:                                                                */
+/*    - .btn-primary: #1E293B (Primary)                                      */
+/*    - .btn-secondary: #64748B (Secondary)                                  */
+/*    - .btn-accent: #ED8936 (Accent)                                        */
+/*    - .bg-background: #0F172A (Background)                                 */
+/*    - .text-dark: #CBD5E1 (Main text)                                      */
+/*    - .text-light: #E2E8F0 (Headings or light text)                        */
+/*    - .accent-highlight/.text-accent: #ED8936 (For alert/highlight)        */
 /* ------------------------------------------------------------------------- */
 
 /* -- BUTTONS -- */
@@ -46,13 +47,13 @@
 }
 .btn-primary:hover,
 .btn-primary:focus {
-  background-color: #256843; /* Slightly darker Forest Green for hover */
+  background-color: #162032; /* Slightly darker primary for hover state */
 }
 
-/* Secondary Button: Less-prominent actions (default, secondary, or alternate CTAs) */
+/* Secondary Button: For cards, less-prominent actions, or alternate flows */
 .btn-secondary {
   background-color: var(--secondary);
-  color: var(--text-dark);
+  color: var(--text-light);
   border: none;
   border-radius: 4px;
   padding: 10px 22px;
@@ -63,10 +64,10 @@
 }
 .btn-secondary:hover,
 .btn-secondary:focus {
-  background-color: #e9da48; /* Slightly darker Sand Beige for hover */
+  background-color: #536178; /* Slightly darker secondary for hover */
 }
 
-/* Accent Button: For emphasis/alerts */
+/* Accent Button: For special emphasis/alerts */
 .btn-accent {
   background-color: var(--accent);
   color: var(--text-light);
@@ -80,10 +81,10 @@
 }
 .btn-accent:hover,
 .btn-accent:focus {
-  background-color: #be6622; /* Darker Terracotta Orange for hover */
+  background-color: #be6622; /* Darker accent for hover */
 }
 
-/* General Button Reset (for base .btn if needed) */
+/* General Button Reset */
 .btn {
   padding: 10px 18px;
   font-size: 1rem;
@@ -94,50 +95,56 @@
 }
 
 /* -- HEADERS / TITLES / SUBTITLES -- */
+/* Primary page and section headings */
 .header-primary, .title-primary {
-  color: var(--primary);
+  color: var(--text-light);       /* Headings on dark/primary BG */
 }
+
+/* Subheadings or key UI elements requiring less accent */
 .header-secondary, .title-secondary {
   color: var(--secondary);
 }
+
+/* Accent – use judiciously for highlights */
 .header-accent, .title-accent {
   color: var(--accent);
 }
 
 /* -- BACKGROUND -- */
-.bg-primary     { background-color: var(--primary); }        /* Forest Green */
-.bg-secondary   { background-color: var(--secondary); }      /* Sand Beige */
-.bg-accent      { background-color: var(--accent); }         /* Terracotta Orange */
-.bg-background  { background-color: var(--background); }     /* Cream White */
-.bg-dark        { background-color: var(--text-dark); }      /* Charcoal for overlays/cards */
-.bg-light       { background-color: var(--text-light); }     /* White */
+.bg-primary     { background-color: var(--primary); }           /* Navbar, prominent elements */
+.bg-secondary   { background-color: var(--secondary); }         /* Cards, secondary UI containers */
+.bg-accent      { background-color: var(--accent); }            /* Used for badges/alerts only */
+.bg-background  { background-color: var(--background); }        /* App main background */
+.bg-dark        { background-color: var(--primary); }           /* For overlays or accent blocks if needed */
+.bg-light       { background-color: var(--secondary); }         /* For cards, blocks (using secondary) */
 
 /* -- TEXT COLOR -- */
-.text-dark      { color: var(--text-dark); }                 /* Charcoal */
-.text-light     { color: var(--text-light); }                /* White */
-.text-primary   { color: var(--primary); }                   /* Forest Green */
-.text-secondary { color: var(--secondary); }                 /* Sand Beige */
-.text-accent    { color: var(--accent); }                    /* Terracotta Orange */
+.text-dark      { color: var(--text-dark); }                    /* Main text on dark BG (body, cards) */
+.text-light     { color: var(--text-light); }                   /* Headings or text on primary/dark BG */
+.text-primary   { color: var(--primary); }                      /* For minor highlights/links */
+.text-secondary { color: var(--secondary); }                    /* Use sparingly (subtle secondary) */
+.text-accent    { color: var(--accent); }                       /* Accent/orange for alerts, icons */
 
 /* -- ACCENTS & HIGHLIGHTS -- */
-/* Use .accent-highlight for icons/alerts/badges/labels requiring pop/accent */
+/* Use .accent-highlight for icons/alerts/badges/labels needing visual pop */
 .accent-highlight {
   color: var(--accent);
   font-weight: 600;
   letter-spacing: 0.03em;
 }
 
-/* -- USAGE NOTES ----------------------------------------------
-   - Use .btn-primary for main call-to-action buttons (e.g. "Book", "Generate")
-   - Use .btn-secondary for secondary actions or alternate flows
-   - Use .btn-accent for special emphasis or less common positive/alert actions
-   - For App/page backgrounds, use .bg-background
-   - For section or card backgrounds, consider .bg-light or .bg-primary, etc.
-   - Main page titles: .title-primary or .header-primary
-   - Section headers/titles: .title-secondary or .header-secondary
-   - Standard text: use .text-dark on .bg-background/.bg-light or .text-light on dark/colored BGs
-   - For highlights/icons/alerts, use .accent-highlight or .text-accent
---------------------------------------------------------------- */
+/* -- USAGE NOTES -----------------------------------------------------------
+   - Use .btn-primary for main call-to-action (CTA) buttons ("Book", "Generate", "Send")
+   - Use .btn-secondary for alternate or secondary flows (cards, sub-CTAs)
+   - Use .btn-accent for warning, alert, or specific highlight actions
+   - App/page backgrounds use .bg-background
+   - For cards/blocks, prefer .bg-secondary or .bg-light (subtle contrast)
+   - For prominent navbars/headers, use .bg-primary + .text-light
+   - Main titles/headings: .title-primary / .header-primary
+   - Section/subheaders: .title-secondary / .header-secondary
+   - Body/standard text: .text-dark on .bg-background; .text-light for headings
+   - For highlights/icons/alerts: .accent-highlight or .text-accent
+--------------------------------------------------------------------------- */
 
 /* -- SAMPLE USAGE FOR DEVELOPERS --
 
@@ -146,7 +153,7 @@
   <button class="btn btn-accent">Save Trip</button>
   <div class="header-primary">TravelGenie</div>
   <div class="bg-background text-dark">Text on app BG</div>
-  <div class="bg-primary text-light">Callout or feature card</div>
+  <div class="bg-primary text-light">Callout card</div>
   <span class="accent-highlight">New!</span>
 
 */
