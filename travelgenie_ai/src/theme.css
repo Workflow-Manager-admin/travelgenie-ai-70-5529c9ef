@@ -1,10 +1,10 @@
 :root {
-  --primary: #3B82F6;
-  --secondary: #10B981;
-  --background: #F9FAFB;
-  --text-dark: #111827;
-  --text-light: #FFFFFF;
-  --accent: #F59E0B;
+  --primary: #38BDF8;         /* Sky Blue */
+  --secondary: #6366F1;       /* Indigo */
+  --background: #F8FAFC;      /* Light Gray */
+  --text-dark: #1E293B;       /* Dark Slate */
+  --text-light: #FFFFFF;      /* White */
+  --accent: #F97316;          /* Coral Orange */
 }
 
 /* Helpful generic classes for easier use */
