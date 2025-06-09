@@ -94,17 +94,17 @@ function ChatPage() {
 
   return (
     <div>
-      <div className="title" style={{ fontSize: '2rem', marginBottom: 10, color: "#1E90FF" }}>
+      <div className="title title-primary" style={{ fontSize: '2rem', marginBottom: 10 }}>
         AI Travel Chatbot
       </div>
-      <div className="description" style={{ maxWidth: 600, marginBottom: 22 }}>
+      <div className="description text-dark" style={{ maxWidth: 600, marginBottom: 22 }}>
         Ask any travel question and get instant answers, tips, recommendations, and planning help!
       </div>
       <div
+        className="bg-light"
         style={{
-          background: "#fff",
           borderRadius: 8,
-          boxShadow: "0 2px 8px rgba(30,144,255,0.10)",
+          boxShadow: "0 2px 8px rgba(56,189,248,0.10)", // Use theme primary color (Sky Blue's 10%)
           padding: 0,
           maxWidth: 500,
           margin: "0 auto 12px auto",
@@ -119,7 +119,7 @@ function ChatPage() {
           flex: 1,
           overflowY: "auto",
           padding: "20px 18px",
-          background: "#F6F9FF",
+          background: "var(--background)",
           minHeight: 220,
         }}>
           {messages.map((msg, i) => (
@@ -134,12 +134,11 @@ function ChatPage() {
             >
               {msg.sender === "ai" && (
                 <div
+                  className="bg-primary text-light"
                   style={{
                     width: 30,
                     height: 30,
-                    background: "#1E90FF",
                     borderRadius: "50%",
-                    color: "#fff",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -153,16 +152,23 @@ function ChatPage() {
                 </div>
               )}
               <div
+                className={msg.sender === "user" 
+                  ? "bg-primary text-light"
+                  : "bg-light text-dark"
+                }
                 style={{
-                  background: msg.sender === "user" ? "#1E90FF" : "#fff",
-                  color: msg.sender === "user" ? "#fff" : "#1A1A1A",
                   borderRadius: 16,
                   padding: "9px 16px",
                   maxWidth: 320,
                   whiteSpace: "pre-line",
                   fontSize: "1.09rem",
-                  boxShadow: msg.sender === "ai" ? "0 2px 4px rgba(30,144,255,0.07)" : "0 2px 4px rgba(30,144,255,0.15)",
-                  alignSelf: msg.sender === "user" ? "flex-end" : "flex-start"
+                  boxShadow: msg.sender === "ai" 
+                    ? "0 2px 4px rgba(56,189,248,0.07)"    // theme primary
+                    : "0 2px 4px rgba(56,189,248,0.15)",
+                  alignSelf: msg.sender === "user" ? "flex-end" : "flex-start",
+                  border: msg.sender === "user" 
+                    ? "1.5px solid var(--primary)"
+                    : "1.5px solid var(--border-color)"
                 }}
               >
                 {msg.text}
@@ -172,37 +178,35 @@ function ChatPage() {
           <div ref={chatEndRef}/>
         </div>
         {/* Input */}
-        <form onSubmit={sendMessage} style={{
+        <form onSubmit={sendMessage} className="bg-light" style={{
           display: "flex",
           gap: 12,
           padding: "12px 14px",
-          borderTop: "1px solid #B3D5FF",
-          background: "#fff"
+          borderTop: "1px solid var(--primary)"
         }}>
           <input
             type="text"
             value={input}
             onChange={e => setInput(e.target.value)}
             disabled={waiting}
-            className="input"
+            className="input text-dark"
             style={{
               flex: 1,
               padding: "10px 15px",
-              border: "1px solid #B3D5FF",
+              border: "1px solid var(--primary)",
               borderRadius: 5,
-              fontSize: "1.08rem"
+              fontSize: "1.08rem",
+              outline: "none"
             }}
             placeholder="Ask me anything about your trip…"
             autoFocus
             aria-label="Chat input"
           />
           <button
-            className="btn"
+            className="btn btn-accent"
             type="submit"
             disabled={waiting || !input.trim()}
             style={{
-              background: "#FFB300",
-              color: "#fff",
               fontWeight: 600,
               minWidth: 80,
               fontSize: "1.08rem"
@@ -213,7 +217,7 @@ function ChatPage() {
           </button>
         </form>
       </div>
-      <div style={{ textAlign: "center", color: "#888", fontSize: "0.97rem" }}>
+      <div className="text-secondary" style={{ textAlign: "center", fontSize: "0.97rem" }}>
         Your fun travel assistant is here 24/7! <span role="img" aria-label="earth">🌍</span>
       </div>
     </div>

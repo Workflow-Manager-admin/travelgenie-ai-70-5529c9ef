@@ -13,17 +13,18 @@ function App() {
   return (
     <Router>
       <div className="app">
-        <nav className="navbar">
-          <div className="container">
-            <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
-              <div className="logo">
-                <span className="logo-symbol">*</span> KAVIA AI
+        <nav className="navbar bg-primary">
+          <div className="container" style={{ width: '100%' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
+              <div className="logo text-light" style={{ gap: 8 }}>
+                <span className="logo-symbol text-accent" style={{ fontWeight: 700 }}>*</span> 
+                <span style={{ fontWeight: 600 }}>KAVIA AI</span>
               </div>
-              <div style={{ display: 'flex', gap: '14px' }}>
-                <Link className="btn" to="/">Home</Link>
-                <Link className="btn" to="/itinerary">Itinerary</Link>
-                <Link className="btn" to="/weather">Weather</Link>
-                <Link className="btn" to="/chat">Chat</Link>
+              <div style={{ display: 'flex', gap: 14 }}>
+                <Link className="btn btn-primary" to="/">Home</Link>
+                <Link className="btn btn-primary" to="/itinerary">Itinerary</Link>
+                <Link className="btn btn-primary" to="/weather">Weather</Link>
+                <Link className="btn btn-primary" to="/chat">Chat</Link>
               </div>
             </div>
           </div>
