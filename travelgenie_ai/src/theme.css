@@ -1,16 +1,148 @@
 :root {
-  --primary: #38BDF8;         /* Sky Blue */
-  --secondary: #6366F1;       /* Indigo */
-  --background: #F8FAFC;      /* Light Gray */
-  --text-dark: #1E293B;       /* Dark Slate */
-  --text-light: #FFFFFF;      /* White */
-  --accent: #F97316;          /* Coral Orange */
+  /* ------------------------------------------------------------------------ */
+  /*  COLOR SYSTEM: Brand Color Variables for TravelGenie AI                  */
+  /* ------------------------------------------------------------------------ */
+  /*  --primary      (Sky Blue):      Used for MAIN buttons, links, highlights */
+  /*  --secondary    (Indigo):        Used for SECONDARY buttons, headers, titles */
+  /*  --background   (Light Gray):    Use as the default page/app background    */
+  /*  --text-dark    (Dark Slate):    Use for standard body text on light backgrounds */
+  /*  --text-light   (White):         Use for text on primary, secondary, or accent backgrounds */
+  /*  --accent       (Coral Orange):  For highlights, icons, alerts, accent elements */
+  /* ------------------------------------------------------------------------ */
+
+  --primary:      #38BDF8;    /* MAIN: buttons, links, highlights (Sky Blue) */
+  --secondary:    #6366F1;    /* SECONDARY: buttons, headers, titles (Indigo) */
+  --background:   #F8FAFC;    /* APP BG: background (Light Gray) */
+  --text-dark:    #1E293B;    /* STANDARD TEXT: on light backgrounds (Dark Slate) */
+  --text-light:   #FFFFFF;    /* INVERSE TEXT: on dark/colored backgrounds (White) */
+  --accent:       #F97316;    /* ACCENT: icons, alerts, highlights (Coral Orange) */
 }
 
-/* Helpful generic classes for easier use */
-.bg-primary   { background-color: var(--primary); }
-.bg-secondary { background-color: var(--secondary); }
-.bg-background{ background-color: var(--background);}
-.text-dark    { color: var(--text-dark); }
-.text-light   { color: var(--text-light); }
-.text-accent  { color: var(--accent); }
+/* ========================================================================= */
+/*   THEME USAGE & BASE UTILITY CLASSES                                      */
+/*   Use these classes in components/pages for consistent theme application   */
+/* ------------------------------------------------------------------------- */
+
+/* -- BUTTONS -- */
+/* Primary Button: Main actions, highlighted calls-to-action */
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--text-light);
+  border: none;
+  border-radius: 4px;
+  padding: 10px 22px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background 0.18s;
+  cursor: pointer;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #179be0; /* Slightly darker for hover */
+}
+
+/* Secondary Button: Less-prominent actions (default, secondary, or alternate CTAs) */
+.btn-secondary {
+  background-color: var(--secondary);
+  color: var(--text-light);
+  border: none;
+  border-radius: 4px;
+  padding: 10px 22px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background 0.18s;
+  cursor: pointer;
+}
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background-color: #4645c2; /* Slightly darker */
+}
+
+/* Accent Button: For secondary or accent actions */
+.btn-accent {
+  background-color: var(--accent);
+  color: var(--text-light);
+  border: none;
+  border-radius: 4px;
+  padding: 10px 22px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background 0.18s;
+  cursor: pointer;
+}
+.btn-accent:hover,
+.btn-accent:focus {
+  background-color: #c05c13;
+}
+
+/* General Button Reset (for base .btn if needed) */
+.btn {
+  padding: 10px 18px;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* -- HEADERS / TITLES / SUBTITLES -- */
+.header-primary, .title-primary {
+  color: var(--primary);
+}
+.header-secondary, .title-secondary {
+  color: var(--secondary);
+}
+.header-accent, .title-accent {
+  color: var(--accent);
+}
+
+/* -- BACKGROUND -- */
+.bg-primary     { background-color: var(--primary); }
+.bg-secondary   { background-color: var(--secondary); }
+.bg-accent      { background-color: var(--accent); }
+.bg-background  { background-color: var(--background); }
+.bg-dark        { background-color: var(--text-dark); }
+.bg-light       { background-color: var(--text-light); }
+
+/* -- TEXT COLOR -- */
+.text-dark      { color: var(--text-dark); }
+.text-light     { color: var(--text-light); }
+.text-primary   { color: var(--primary); }
+.text-secondary { color: var(--secondary); }
+.text-accent    { color: var(--accent); }
+
+/* -- ACCENTS & HIGHLIGHTS -- */
+/* Use .accent-highlight for icons/alerts/badges/labels requiring pop/accent */
+.accent-highlight {
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+/* -- USAGE NOTES ----------------------------------------------
+   - Use .btn-primary for main call-to-action buttons (e.g. "Book", "Generate")
+   - Use .btn-secondary for secondary actions or alternate flows
+   - Use .btn-accent for special emphasis or less common positive/alert actions
+   - For App/page backgrounds, use .bg-background
+   - For section or card backgrounds, consider .bg-light or .bg-primary, etc.
+   - Main page titles: .title-primary or .header-primary
+   - Section headers/titles: .title-secondary or .header-secondary
+   - Standard text: use .text-dark on .bg-background/.bg-light or .text-light on dark/colored BGs
+   - For highlights/icons/alerts, use .accent-highlight or .text-accent
+--------------------------------------------------------------- */
+
+/* -- SAMPLE USAGE FOR DEVELOPERS --
+
+  <button class="btn btn-primary">Book Now</button>
+  <button class="btn btn-secondary">Learn More</button>
+  <button class="btn btn-accent">Save Trip</button>
+  <div class="header-primary">TravelGenie</div>
+  <div class="bg-background text-dark">Text on app BG</div>
+  <div class="bg-primary text-light">Callout or feature card</div>
+  <span class="accent-highlight">New!</span>
+
+*/
+
+/* ========================================================================= */
+/*   END OF THEME UTILITIES                                                  */
+/* ========================================================================= */
