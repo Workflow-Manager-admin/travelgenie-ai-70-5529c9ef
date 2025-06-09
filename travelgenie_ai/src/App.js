@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import './App.css';
+import './theme.css';
 import HomePage from './pages/HomePage';
 import ItineraryPage from './pages/ItineraryPage';
 import WeatherPage from './pages/WeatherPage';

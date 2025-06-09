@@ -1,0 +1,16 @@
+:root {
+  --primary: #3B82F6;
+  --secondary: #10B981;
+  --background: #F9FAFB;
+  --text-dark: #111827;
+  --text-light: #FFFFFF;
+  --accent: #F59E0B;
+}
+
+/* Helpful generic classes for easier use */
+.bg-primary   { background-color: var(--primary); }
+.bg-secondary { background-color: var(--secondary); }
+.bg-background{ background-color: var(--background);}
+.text-dark    { color: var(--text-dark); }
+.text-light   { color: var(--text-light); }
+.text-accent  { color: var(--accent); }
