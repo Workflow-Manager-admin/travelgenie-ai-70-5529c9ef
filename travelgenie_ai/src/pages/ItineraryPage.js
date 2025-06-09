@@ -13,8 +13,8 @@ function ItineraryPage() {
     endDate: "",
   });
   const [loading, setLoading] = useState(false);
-  const [itineraryText, setItineraryText] = useState(""); // AI raw output
-  const [itineraryByDay, setItineraryByDay] = useState([]); // Parsed for per-day display
+  const [itineraryText, setItineraryText] = useState("");
+  const [itineraryByDay, setItineraryByDay] = useState([]);
   const [error, setError] = useState("");
 
   // Flight API state
@@ -32,7 +32,7 @@ function ItineraryPage() {
 
   // PUBLIC_INTERFACE
   async function fetchItineraryCohere({ from, to, startDate, endDate }) {
-    // Construct prompt for day-by-day output, using only trip start and end dates
+    // Construct prompt for day-by-day output using only trip start and end dates
     const prompt =
 `Create a detailed travel itinerary for this trip:
 From: ${from}
@@ -260,7 +260,7 @@ Use the given trip start and end dates to determine length.`;
 
     loadFlights();
     // eslint-disable-next-line
-  }, [form.from, form.to, AMA_API_KEY, AMA_API_SECRET]); // Only runs on relevant param changes
+  }, [form.from, form.to, AMA_API_KEY, AMA_API_SECRET]);
 
   function formatFlight(f) {
     const out = f.itineraries?.[0]?.segments?.[0];
@@ -278,12 +278,13 @@ Use the given trip start and end dates to determine length.`;
   }
 
   return (
-    <div className="container" style={{ maxWidth: 540, marginTop: 110 }}>
-      <h2 className="title" style={{ fontSize: "2.2rem", marginBottom: 16 }}>
+    <div className="container bg-background text-dark" style={{ maxWidth: 540, marginTop: 110 }}>
+      <h2 className="title title-primary" style={{ fontSize: "2.2rem", marginBottom: 16 }}>
         AI Itinerary Generator
       </h2>
       <form
         onSubmit={handleSubmit}
+        className="bg-light"
         style={{
           display: "flex",
           flexDirection: "column",
@@ -291,7 +292,6 @@ Use the given trip start and end dates to determine length.`;
           border: "1px solid var(--border-color)",
           borderRadius: 8,
           padding: 24,
-          background: "rgba(255,255,255,0.04)"
         }}
       >
         <div style={{ display: "flex", gap: 8 }}>
@@ -347,8 +347,7 @@ Use the given trip start and end dates to determine length.`;
             />
           </label>
         </div>
-        {/* Number of Days field removed */}
-        <button className="btn btn-large" type="submit" disabled={loading}>
+        <button className="btn btn-large btn-primary" type="submit" disabled={loading}>
           {loading ? "Generating..." : "Generate Itinerary"}
         </button>
       </form>
@@ -366,14 +365,14 @@ Use the given trip start and end dates to determine length.`;
       >
         {flightsLoading ? "Searching flights..." : "Search Flights"}
       </button>
-      {(flightsError && showFlights) && <div style={{ color: "tomato", margin: "10px 0", fontWeight: 600 }}>{flightsError}</div>}
+      {(flightsError && showFlights) && <div className="text-accent" style={{ margin: "10px 0", fontWeight: 600 }}>{flightsError}</div>}
 
       {showFlights && !flightsLoading && flightOptions && flightOptions.length > 0 && (
         <div
+          className="bg-light"
           style={{
             marginTop: 18,
             marginBottom: 24,
-            background: "rgba(255,255,255,0.08)",
             borderRadius: 12,
             padding: "16px 13px",
             border: "1.5px solid var(--border-color)",
@@ -383,9 +382,8 @@ Use the given trip start and end dates to determine length.`;
           }}
         >
           <div
-            className="subtitle"
+            className="subtitle header-secondary"
             style={{
-              color: "var(--secondary)",
               fontWeight: 600,
               marginBottom: 6,
               fontSize: "1.13rem",
@@ -400,9 +398,9 @@ Use the given trip start and end dates to determine length.`;
             return (
               <div
                 key={i}
+                className="bg-background"
                 style={{
                   border: "1.5px solid var(--border-color)",
-                  background: "white",
                   borderRadius: 10,
                   minWidth: 260,
                   maxWidth: "49%",
@@ -412,12 +410,12 @@ Use the given trip start and end dates to determine length.`;
                   flex: "1 1 260px"
                 }}
               >
-                <div style={{fontWeight: 600, marginBottom: 7, color: "var(--secondary)"}}>
+                <div className="text-secondary" style={{fontWeight: 600, marginBottom: 7}}>
                   {info.from} <span style={{fontWeight:400}}>&rarr;</span> {info.to}
                 </div>
                 <div style={{fontWeight: 500}}>
                   Airline:{" "}
-                  <span style={{color: "#3B82F6"}}>{info.airline}</span>
+                  <span className="text-primary">{info.airline}</span>
                 </div>
                 <div style={{margin: "3px 0", fontSize: ".97rem"}}>
                   <b>Departure:</b> {info.departure.replace("T", " ").slice(0, 16)}
@@ -425,35 +423,34 @@ Use the given trip start and end dates to determine length.`;
                   <b>Arrival:</b> {info.arrival.replace("T", " ").slice(0, 16)}
                 </div>
                 <div style={{fontSize: ".97rem"}}><b>Duration:</b> {info.duration.replace("PT", "")}</div>
-                <div style={{marginTop: 5, fontWeight: 600, color: "#F59E0B"}}>
+                <div className="accent-highlight" style={{marginTop: 5}}>
                   {info.currency} {info.price}
                 </div>
               </div>
             );
           })}
           </div>
-          <div style={{ marginTop: 7, color: "var(--text-secondary)", fontSize: ".97rem" }}>
+          <div className="text-secondary" style={{ marginTop: 7, fontSize: ".97rem" }}>
             Flights powered by Amadeus API. Prices/sample data for 1 adult.
           </div>
         </div>
       )}
 
-      {error && <div style={{ color: "tomato", marginTop: 12 }}>{error}</div>}
+      {error && <div className="text-accent" style={{ marginTop: 12 }}>{error}</div>}
       {itineraryByDay.length > 0 && (
         <div
+          className="bg-light"
           style={{
             marginTop: 36,
-            background: "rgba(255,255,255,0.05)",
             borderRadius: 8,
             padding: 22,
           }}
         >
-          <div className="subtitle" style={{ marginBottom: 10 }}>
+          <div className="subtitle header-secondary" style={{ marginBottom: 10 }}>
             AI-Generated Itinerary:
           </div>
-          <div style={{ 
+          <div className="text-secondary" style={{
             marginBottom: 16,
-            color: "var(--text-secondary)",
             fontSize: ".98rem"
           }}>
             <b>From:</b> {form.from} <b>To:</b> {form.to} <br/>
@@ -466,14 +463,14 @@ Use the given trip start and end dates to determine length.`;
                 marginBottom: 22,
                 borderLeft: "4px solid var(--accent)",
                 paddingLeft: 11,
-                background: "rgba(234, 97, 97,0.05)",
+                background: "rgba(249,115,22,0.04)",
                 borderRadius: 6,
               }}
             >
-              <div style={{ fontWeight: 600, fontSize: "1.04rem", marginBottom: 4 }}>
+              <div className="header-primary" style={{ fontWeight: 600, fontSize: "1.04rem", marginBottom: 4 }}>
                 {day}
               </div>
-              <ul style={{ margin: "0 0 0 10px", padding: 0, color: "var(--text-secondary)" }}>
+              <ul className="text-secondary" style={{ margin: "0 0 0 10px", padding: 0 }}>
                 {activities.map((act, idx) => (
                   <li key={idx} style={{marginBottom: 2}}>{act}</li>
                 ))}
@@ -485,14 +482,5 @@ Use the given trip start and end dates to determine length.`;
     </div>
   );
 }
-
-const thStyle = {
-  padding: "4px 8px",
-  textAlign: "left",
-  fontWeight: 500
-};
-const tdStyle = {
-  padding: "4px 8px"
-};
 
 export default ItineraryPage;

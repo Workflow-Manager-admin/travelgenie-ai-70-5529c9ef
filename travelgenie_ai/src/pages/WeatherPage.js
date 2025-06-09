@@ -77,7 +77,7 @@ function WeatherPage() {
 
   return (
     <div>
-      <div className="title" style={{ fontSize: '2rem', marginBottom: 10, color: "#1E90FF" }}>
+      <div className="title title-primary" style={{ fontSize: '2rem', marginBottom: 10 }}>
         Weather Checker
       </div>
       <div className="description" style={{ maxWidth: 600, marginBottom: 22 }}>
@@ -86,14 +86,14 @@ function WeatherPage() {
 
       <form
         onSubmit={handleSubmit}
+        className="bg-light"
         style={{
-          background: "#fff",
           borderRadius: 8,
           boxShadow: "0 2px 8px rgba(30,144,255,0.08)",
           padding: 26,
           marginBottom: 32,
           maxWidth: 430,
-          color: "#1A1A1A",
+          color: "var(--text-dark)",
           display: "flex",
           alignItems: "center",
           gap: 12,
@@ -108,7 +108,7 @@ function WeatherPage() {
           className="input"
           style={{
             padding: "9px 13px",
-            border: "1px solid #B3D5FF",
+            border: "1px solid var(--border-color)",
             borderRadius: 4,
             fontSize: "1rem",
             flex: 1,
@@ -116,11 +116,9 @@ function WeatherPage() {
           }}
         />
         <button
-          className="btn"
+          className="btn btn-primary"
           type="submit"
           style={{
-            background: "#FFB300",
-            color: "#fff",
             fontWeight: 600,
             fontSize: "1.08rem"
           }}
@@ -130,16 +128,16 @@ function WeatherPage() {
         </button>
       </form>
       {error && (
-        <div style={{ color: "#e0383f", marginBottom: 16, fontSize: "1rem" }}>
+        <div className="accent-highlight" style={{ marginBottom: 16, fontSize: "1rem" }}>
           {error}
         </div>
       )}
       <div>
         {weather && (
           <div
+            className="bg-background"
             style={{
-              background: "#F7F9FC",
-              border: "1px solid #B3D5FF",
+              border: "1px solid var(--primary)",
               borderRadius: 6,
               padding: "18px 20px",
               marginBottom: 28,
@@ -153,12 +151,12 @@ function WeatherPage() {
                 style={{ width: 54, height: 54 }}
               />
               <div>
-                <div style={{ fontSize: "1.3rem", fontWeight: 600 }}>{weather.city}</div>
-                <div style={{ fontSize: "1.08rem", color: "#1E90FF" }}>{weather.main}</div>
+                <div className="header-secondary" style={{ fontSize: "1.3rem", fontWeight: 600 }}>{weather.city}</div>
+                <div className="text-primary" style={{ fontSize: "1.08rem" }}>{weather.main}</div>
                 <div style={{ fontSize: "1.05rem" }}>
                   <b>{Math.round(weather.temp)}°C</b> (min {Math.round(weather.temp_min)}° / max {Math.round(weather.temp_max)}°)
                 </div>
-                <div style={{ fontSize: "0.96rem", color: "#888" }}>
+                <div className="text-secondary" style={{ fontSize: "0.96rem" }}>
                   {weather.desc}, humidity: {weather.humidity}%, wind: {weather.wind} m/s
                 </div>
               </div>
@@ -167,19 +165,18 @@ function WeatherPage() {
         )}
         {forecast.length > 0 && (
           <div>
-            <div style={{ fontWeight:600, color:"#1E90FF", marginBottom: 8 }}>5-Day Forecast</div>
+            <div className="header-secondary" style={{ fontWeight:600, marginBottom: 8 }}>5-Day Forecast</div>
             <div style={{ display: "flex", gap: 18, flexWrap: "wrap" }}>
               {forecast.map((f, i) => (
                 <div
                   key={i}
+                  className="bg-light text-dark"
                   style={{
-                    background: "#fff",
-                    border: "1px solid #B3D5FF",
+                    border: "1px solid var(--primary)",
                     borderRadius: 6,
                     padding: "13px 14px",
                     width: 110,
                     boxShadow: "0 2px 4px rgba(30,144,255,0.03)",
-                    color: "#1A1A1A",
                     textAlign: "center"
                   }}
                 >
@@ -190,8 +187,8 @@ function WeatherPage() {
                     src={`https://openweathermap.org/img/wn/${f.icon}@2x.png`}
                     style={{ width: 44, height: 44 }}
                   />
-                  <div style={{ fontSize: "1.05rem", color:"#1E90FF", fontWeight:600 }}>{Math.round(f.temp)}°C</div>
-                  <div style={{ fontSize: "0.92rem", color: "#888" }}>{f.desc}</div>
+                  <div className="text-primary" style={{ fontSize: "1.05rem", fontWeight:600 }}>{Math.round(f.temp)}°C</div>
+                  <div className="text-secondary" style={{ fontSize: "0.92rem" }}>{f.desc}</div>
                 </div>
               ))}
             </div>
