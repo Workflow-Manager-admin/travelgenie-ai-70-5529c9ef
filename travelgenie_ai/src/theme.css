@@ -2,25 +2,33 @@
   /* ------------------------------------------------------------------------ */
   /*  COLOR SYSTEM: Brand Color Variables for TravelGenie AI                  */
   /* ------------------------------------------------------------------------ */
-  /*  --primary      (Sky Blue):      Used for MAIN buttons, links, highlights */
-  /*  --secondary    (Indigo):        Used for SECONDARY buttons, headers, titles */
-  /*  --background   (Light Gray):    Use as the default page/app background    */
-  /*  --text-dark    (Dark Slate):    Use for standard body text on light backgrounds */
-  /*  --text-light   (White):         Use for text on primary, secondary, or accent backgrounds */
-  /*  --accent       (Coral Orange):  For highlights, icons, alerts, accent elements */
+  /*  --primary      (Forest Green):      Used for MAIN actions, buttons, highlights */
+  /*  --secondary    (Sand Beige):        Used for secondary actions, subtle headers  */
+  /*  --background   (Cream White):       App background, cards, main page BG         */
+  /*  --text-dark    (Charcoal):          Main text on light backgrounds              */
+  /*  --text-light   (White):             Text on dark/primary backgrounds            */
+  /*  --accent       (Terracotta Orange): For highlights, icons, alerts, accents      */
   /* ------------------------------------------------------------------------ */
 
-  --primary:      #38BDF8;    /* MAIN: buttons, links, highlights (Sky Blue) */
-  --secondary:    #6366F1;    /* SECONDARY: buttons, headers, titles (Indigo) */
-  --background:   #F8FAFC;    /* APP BG: background (Light Gray) */
-  --text-dark:    #1E293B;    /* STANDARD TEXT: on light backgrounds (Dark Slate) */
-  --text-light:   #FFFFFF;    /* INVERSE TEXT: on dark/colored backgrounds (White) */
-  --accent:       #F97316;    /* ACCENT: icons, alerts, highlights (Coral Orange) */
+  --primary:      #2F855A;    /* MAIN: buttons, links, highlights (Forest Green) */
+  --secondary:    #F6E05E;    /* SECONDARY: subtle highlights, headers (Sand Beige) */
+  --background:   #FAF9F6;    /* APP BG: background (Cream White) */
+  --text-dark:    #2D3748;    /* STANDARD TEXT: on light backgrounds (Charcoal) */
+  --text-light:   #FFFFFF;    /* INVERSE TEXT: on dark/primary backgrounds (White) */
+  --accent:       #ED8936;    /* ACCENT: icons, alerts, highlights (Terracotta Orange) */
 }
 
 /* ========================================================================= */
 /*   THEME USAGE & BASE UTILITY CLASSES                                      */
 /*   Use these classes in components/pages for consistent theme application   */
+/*   New Palette:                                                            */
+/*    - .btn-primary: Forest Green (#2F855A)                                 */
+/*    - .btn-secondary: Sand Beige (#F6E05E)                                 */
+/*    - .btn-accent: Terracotta Orange (#ED8936)                             */
+/*    - .bg-background: Cream White (#FAF9F6)                                */
+/*    - .text-dark: Charcoal (#2D3748)                                       */
+/*    - .text-light: White (#FFFFFF)                                         */
+/*    - .accent-highlight/.text-accent: Terracotta                           */
 /* ------------------------------------------------------------------------- */
 
 /* -- BUTTONS -- */
@@ -38,13 +46,13 @@
 }
 .btn-primary:hover,
 .btn-primary:focus {
-  background-color: #179be0; /* Slightly darker for hover */
+  background-color: #256843; /* Slightly darker Forest Green for hover */
 }
 
 /* Secondary Button: Less-prominent actions (default, secondary, or alternate CTAs) */
 .btn-secondary {
   background-color: var(--secondary);
-  color: var(--text-light);
+  color: var(--text-dark);
   border: none;
   border-radius: 4px;
   padding: 10px 22px;
@@ -55,10 +63,10 @@
 }
 .btn-secondary:hover,
 .btn-secondary:focus {
-  background-color: #4645c2; /* Slightly darker */
+  background-color: #e9da48; /* Slightly darker Sand Beige for hover */
 }
 
-/* Accent Button: For secondary or accent actions */
+/* Accent Button: For emphasis/alerts */
 .btn-accent {
   background-color: var(--accent);
   color: var(--text-light);
@@ -72,7 +80,7 @@
 }
 .btn-accent:hover,
 .btn-accent:focus {
-  background-color: #c05c13;
+  background-color: #be6622; /* Darker Terracotta Orange for hover */
 }
 
 /* General Button Reset (for base .btn if needed) */
@@ -97,19 +105,19 @@
 }
 
 /* -- BACKGROUND -- */
-.bg-primary     { background-color: var(--primary); }
-.bg-secondary   { background-color: var(--secondary); }
-.bg-accent      { background-color: var(--accent); }
-.bg-background  { background-color: var(--background); }
-.bg-dark        { background-color: var(--text-dark); }
-.bg-light       { background-color: var(--text-light); }
+.bg-primary     { background-color: var(--primary); }        /* Forest Green */
+.bg-secondary   { background-color: var(--secondary); }      /* Sand Beige */
+.bg-accent      { background-color: var(--accent); }         /* Terracotta Orange */
+.bg-background  { background-color: var(--background); }     /* Cream White */
+.bg-dark        { background-color: var(--text-dark); }      /* Charcoal for overlays/cards */
+.bg-light       { background-color: var(--text-light); }     /* White */
 
 /* -- TEXT COLOR -- */
-.text-dark      { color: var(--text-dark); }
-.text-light     { color: var(--text-light); }
-.text-primary   { color: var(--primary); }
-.text-secondary { color: var(--secondary); }
-.text-accent    { color: var(--accent); }
+.text-dark      { color: var(--text-dark); }                 /* Charcoal */
+.text-light     { color: var(--text-light); }                /* White */
+.text-primary   { color: var(--primary); }                   /* Forest Green */
+.text-secondary { color: var(--secondary); }                 /* Sand Beige */
+.text-accent    { color: var(--accent); }                    /* Terracotta Orange */
 
 /* -- ACCENTS & HIGHLIGHTS -- */
 /* Use .accent-highlight for icons/alerts/badges/labels requiring pop/accent */
